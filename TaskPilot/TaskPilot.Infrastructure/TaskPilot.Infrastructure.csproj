@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaskPilot.Application\TaskPilot.Application.csproj" />
+    <ProjectReference Include="..\TaskPilot.Domain\TaskPilot.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
