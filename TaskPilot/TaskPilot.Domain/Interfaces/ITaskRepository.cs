@@ -13,5 +13,7 @@ namespace TaskPilot.Domain.Interfaces
 
         // Consultas complexas usando Stored Procedures/Views
         Task<IEnumerable<Entities.Task>> GetOverdueTasksByUserIdAsync(int userId);
+
+        Task<IEnumerable<Entities.Task>> GetSummaryTasksByUserIdAsync(int userId);
     }
 }
