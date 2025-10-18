@@ -13,7 +13,7 @@ Será utlizado T-SQL seguindo a modelagem abaixo:
 ## TaskPilot.Domain
 ![alt text](Domain.png)
 
-## TaskPilot.Infra
+## TaskPilot.Infraestructure
 ![alt text](Infra.png)
 
 ## TaskPilot.Application
