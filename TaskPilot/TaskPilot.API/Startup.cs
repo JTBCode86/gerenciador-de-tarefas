@@ -1,45 +1,58 @@
+// TaskPilot.API/Startup.cs
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using TaskPilot.Application;      // Para AddApplicationServices
+using TaskPilot.Infrastructure;   // Para AddInfrastructureServices
+using TaskPilot.API.Extensions;   // Para ExceptionMiddleware
 
 namespace TaskPilot.API
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // Configura os serviços (DI Container)
         public void ConfigureServices(IServiceCollection services)
         {
+            // Adiciona serviços das camadas Application e Infrastructure
+            services.AddApplicationServices();
+            services.AddInfrastructureServices(Configuration); // Passa a configuração do BD/APIs
+
             services.AddControllers();
+
+            // Adicionar configuração do Swagger/OpenAPI (muito útil)
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "TaskPilot API", Version = "v1" });
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // Configura o pipeline de requisições HTTP
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // Habilita o Swagger (Documentação da API)
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TaskPilot API v1"));
             }
 
+            // MIDDLEWARE PARA TRATAMENTO GLOBAL DE EXCEÇÕES
+            // Deve vir antes do UseRouting
+            app.UseMiddleware<ExceptionMiddleware>();
+
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
