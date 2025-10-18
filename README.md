@@ -18,3 +18,6 @@ Será utlizado T-SQL seguindo a modelagem abaixo:
 
 ## TaskPilot.Application
 ![alt text](Application.png)
+
+## TaskPilot.Api
+![alt text](api.png)
