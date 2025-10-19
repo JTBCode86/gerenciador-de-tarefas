@@ -12,6 +12,12 @@
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaskPilot.Application\TaskPilot.Application.csproj" />
+    <ProjectReference Include="..\TaskPilot.Domain\TaskPilot.Domain.csproj" />
   </ItemGroup>
 
 </Project>
