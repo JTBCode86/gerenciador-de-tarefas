@@ -35,7 +35,7 @@ namespace TaskPilot.Infrastructure.Data.Repositories
                 using (var command = connection.CreateCommand())
                 {
                     // O nome da sua Stored Procedure
-                    command.CommandText = "CreateNewTask";
+                    command.CommandText = "SpCreateNewTask";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
                     // 1. Adicionar Parâmetros de Entrada
@@ -55,11 +55,12 @@ namespace TaskPilot.Infrastructure.Data.Repositories
                         {
                             // Lendo o resultado que foi mapeado para 'NewTaskId' na SP
                             // Deve ser o índice 0, que é a primeira coluna do SELECT da SP.
-                            newTaskId = reader.GetInt32(0);
+                            //newTaskId = reader.GetInt32(0);
+                            newTaskId = (int)reader.GetDecimal(0);
                         }
                         else
                         {
-                            throw new InvalidOperationException("Stored Procedure 'CreateNewTask' não retornou um ID de tarefa.");
+                            throw new InvalidOperationException("Stored Procedure 'SpCreateNewTask' não retornou um ID de tarefa.");
                         }
                     }
                 }
