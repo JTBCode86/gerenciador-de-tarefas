@@ -4,6 +4,7 @@ using TaskPilot.Domain.Interfaces;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace TaskPilot.Application.Features.Tasks.Commands.CompleteTask
 {
@@ -48,6 +49,23 @@ namespace TaskPilot.Application.Features.Tasks.Commands.CompleteTask
 
             // 2. Persistência (O TaskRepository usa a SP MarkTaskAsCompleted ou faz o UPDATE)
             await _taskRepository.UpdateAsync(task);
+        }
+
+        public async Task<int> Handle(CompleteTaskCommand command, CancellationToken cancellationToken)
+        {
+            var task = await _taskRepository.GetByIdAsync(command.TaskId);
+
+            if (task == null)
+            {
+                throw new NotFoundException($"Tarefa com ID {command.TaskId} não encontrada.");
+            }
+
+            task.StatusId = 2;
+            task.CompletedAt = DateTime.UtcNow;
+
+            await _taskRepository.UpdateAsync(task);
+
+            return task.Id;
         }
     }
 }
