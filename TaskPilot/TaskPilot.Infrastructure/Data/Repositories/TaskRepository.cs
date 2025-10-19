@@ -138,5 +138,10 @@ namespace TaskPilot.Infrastructure.Data.Repositories
                 A implementação acima é a forma padrão do EF Core.
         */
         }
+
+        public Task<List<Domain.Entities.Task>> GetSummaryAsync(int userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

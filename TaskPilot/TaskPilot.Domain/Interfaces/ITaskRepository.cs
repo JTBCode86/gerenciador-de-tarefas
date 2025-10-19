@@ -15,5 +15,9 @@ namespace TaskPilot.Domain.Interfaces
         Task<IEnumerable<Entities.Task>> GetOverdueTasksByUserIdAsync(int userId);
 
         Task<IEnumerable<Entities.Task>> GetSummaryTasksByUserIdAsync(int userId);
+
+       // Task<List<System.Threading.Tasks.Task>> GetSummaryAsync(int userId);
+
+        System.Threading.Tasks.Task<List<TaskPilot.Domain.Entities.Task>> GetSummaryAsync(int userId);
     }
 }
