@@ -4,4 +4,4 @@ INSERT INTO TaskStatuses (Id, Name) VALUES
 (2, 'Em Andamento'),
 (3, 'Concluída'),
 (4, 'Bloqueada');
-GO;
+GO
