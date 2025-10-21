@@ -89,3 +89,34 @@ cd TaskPilot
 ```
 
 ### Passo 3: Aplicar Migrations do Entity Framework Core
+
+O projeto utiliza migrations para criar e atualizar o schema do banco de dados.
+
+1. Abra um terminal na pasta raiz da solução (TaskPilot/).
+2. Execute o comando para aplicar as migrations pendentes e criar o banco de dados:
+
+```bash
+    dotnet ef database update --project TaskPilot.Infrastructure
+```
+
+### Passo 4: Executar a Aplicação
+
+1. Navegue até o diretório do projeto da API:
+
+```bash
+    cd TaskPilot.API
+```
+
+2. Execute a aplicação:
+
+```bash
+dotnet run
+```
+
+### Passo 5: Acessar a Documentação (Swagger)
+
+A API estará rodando em uma porta local (verifique o launchSettings.json, geralmente http://localhost:5000 ou https://localhost:5001).
+
+Acesse a documentação interativa (Swagger UI) no seu navegador:
+
+http://localhost:[Porta_API]/swagger
