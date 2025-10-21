@@ -69,5 +69,23 @@ Siga estas etapas para configurar e executar a API localmente:
 ### Passo 1: Clonar o Repositório
 
 ```bash
+
 git clone [https://www.youtube.com/watch?v=351MZvGXpnY](https://www.youtube.com/watch?v=351MZvGXpnY)
 cd TaskPilot
+
+```
+
+### Passo 2: Configurar a Conexão com o Banco de Dados
+
+1. Abra o arquivo TaskPilot.API/appsettings.json.
+2. Localize a seção ConnectionStrings.
+3. Configure a string de conexão DefaultConnection para apontar para o seu SQL Server local ou instância do LocalDB.
+
+``` JSON
+    "ConnectionStrings": {
+        "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=TaskPilotDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+        // Altere esta linha conforme sua configuração de banco de dados!
+    }
+```
+
+### Passo 3: Aplicar Migrations do Entity Framework Core
