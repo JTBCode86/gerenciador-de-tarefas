@@ -81,7 +81,7 @@ cd TaskPilot
 2. Localize a seção ConnectionStrings.
 3. Configure a string de conexão DefaultConnection para apontar para o seu SQL Server local ou instância do LocalDB.
 
-``` JSON
+``` Jason
     "ConnectionStrings": {
         "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=TaskPilotDB;Trusted_Connection=True;MultipleActiveResultSets=true"
         // Altere esta linha conforme sua configuração de banco de dados!
@@ -110,7 +110,7 @@ O projeto utiliza migrations para criar e atualizar o schema do banco de dados.
 2. Execute a aplicação:
 
 ```bash
-dotnet run
+    dotnet run
 ```
 
 ### Passo 5: Acessar a Documentação (Swagger)
