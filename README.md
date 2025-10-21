@@ -70,7 +70,8 @@ Siga estas etapas para configurar e executar a API localmente:
 
 ```bash
 
-git clone [https://www.youtube.com/watch?v=351MZvGXpnY](https://www.youtube.com/watch?v=351MZvGXpnY)
+git clone [https://github.com/JTBCode86/gerenciador-de-tarefas.git]
+
 cd TaskPilot
 
 ```
