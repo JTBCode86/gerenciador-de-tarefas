@@ -49,9 +49,11 @@ A API utiliza um banco de dados relacional (SQL Server por padrão) gerenciado p
 
 **Relacionamento:** `User` 1 : N `Task` (Um usuário pode ter muitas tarefas).
 
-## Modelagem completa (Envolvendo todas as entidades)
+## Modelagem completa: Entidade e relacionamento (MER) 
 
-<img src="/image/MER.png" alt="Modelo entidade e relacionamento">
+<p align="center">
+  <img src="./image/MER.png" width="500">
+</p>
 
 ---
 
