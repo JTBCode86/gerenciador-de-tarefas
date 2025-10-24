@@ -51,7 +51,7 @@ A API utiliza um banco de dados relacional (SQL Server por padrão) gerenciado p
 
 ## Modelagem completa (Envolvendo todas as entidades)
 
-<img src="/image/MER.png" alt="Modelo entidade e relacionamento">
+<img src="./image/MER.png" alt="Modelo entidade e relacionamento">
 
 ---
 
