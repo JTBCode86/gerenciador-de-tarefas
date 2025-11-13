@@ -61,12 +61,13 @@ A API utiliza um banco de dados relacional (SQL Server por padrão) gerenciado p
 
 Siga estas etapas para configurar e executar a API localmente:
 
-### Pré-requisitos
+### Pré-requisitos:
 
 1.  **SDK .NET Core 3.1** (A framework alvo do projeto)
 2.  **SQL Server** (ou SQL Express LocalDB)
-3.  **Git**
-4.  **Editor de Código** (Visual Studio ou VS Code)
+3.  **Python 3.x** 
+4.  **Git**
+5.  **Editor de Código** (Visual Studio ou VS Code)
 
 ### Passo 1: Clonar o Repositório
 
@@ -107,19 +108,57 @@ O projeto utiliza migrations para criar e atualizar o schema do banco de dados.
 1. Navegue até o diretório do projeto da API:
 
 ```bash
-    cd TaskPilot.API
+    cd TaskPilot/TaskPilot.API
 ```
+
+A API deve iniciar e estará rodando em https://localhost:5001 (Verifique a saída do console para confirmar a porta).
 
 2. Execute a aplicação:
 
 ```bash
     dotnet run
 ```
+### Passo 5 Verificar o Swagger: Abra seu navegador e acesse a documentação interativa para confirmar que a API está no ar:
 
-### Passo 5: Acessar a Documentação (Swagger)
+```bash
+https://localhost:5001/swagger
+```
+
+### Passo 6: Acessar a Documentação (Swagger)
 
 A API estará rodando em uma porta local (verifique o launchSettings.json, geralmente http://localhost:5000 ou https://localhost:5001).
 
 Acesse a documentação interativa (Swagger UI) no seu navegador:
 
 http://localhost:[Porta_API]/swagger
+
+### Passo 7: Configurar e Executar o Cliente Python
+
+1. Instalar Dependências Python: Abra um novo terminal e navegue até a pasta do cliente Python (ajuste o caminho se necessário):
+
+```bash
+cd [Caminho para TaskPilot]/src/taskpilot_client
+pip install requests
+```
+
+2. Configurar a URL da API no Python: Abra o arquivo main.py e configure a variável API_BASE_URL para corresponder à sua API (baseado no seu último teste, é o HTTPS):
+
+```bash
+# main.py
+API_BASE_URL = "https://localhost:5001" 
+USER_ID_TO_FETCH = 1  # ID do usuário existente no seu DB
+```
+
+3. Executar o Script Python: Execute o cliente Python para testar os casos de uso (Busca, Criação e Conclusão de Tarefas):
+
+```bash
+python main.py
+```
+
+4. Verificar a Saída: O console Python deve exibir:
+
+✅ Tarefa criada com sucesso. ID: [número]
+
+✅ Tarefa ID [número] encerrada com sucesso.
+
+O Resumo de Tarefas final, mostrando a tarefa recém-criada com o status COMPLETA.
