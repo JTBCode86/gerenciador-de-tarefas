@@ -32,14 +32,19 @@ class TaskApiAdapter(ITaskRepository):
         tasks = []
         for item in data:
             try:
+                task_status = item.get('status')
+                is_completed_value = (task_status == 'Concluída')
+
                 task = Task(
                     id=item['id'],
                     title=item['title'],
                     description=item.get('description'),
                     created_at=datetime.fromisoformat(item['createdAt'].replace('Z', '+00:00')),
                     due_date=datetime.fromisoformat(item['dueDate'].replace('Z', '+00:00')) if item.get('dueDate') else None,
-                    is_completed=item['isCompleted'],
-                    user_id=item['userId']
+                    #is_completed=item['isCompleted'],
+                    is_completed=is_completed_value,
+                    #user_id=item['userId']
+                    user_id=user_id
                 )
                 tasks.append(task)
             except (KeyError, ValueError, TypeError) as e:
